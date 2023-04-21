@@ -21,6 +21,10 @@ public partial class MainPage : ContentPage
             studentEmailEntry.Text = found.Email;
             studentAddressEntry.Text = found.Address;
         }
+        else
+        {
+            DisplayAlert("Error", "Student not found", "Ok");
+        }
 
     }
 
@@ -48,6 +52,7 @@ public partial class MainPage : ContentPage
         }
         Database db = Database.GetInstance();
         db.Update($"Update students set Phone = \"{found.Phone}\", Gender = \"{found.Gender}\", Email = \"{found.Email}\", Address = \"{found.Address}\" Where id = \"{found.Id}\";");
+        DisplayAlert("Notice", "Saved", "Ok");
     }
 }
 
