@@ -12,7 +12,7 @@ namespace FinalProject
         public string CourseId { get; private set; }
         public string Instructor { get; private set; }
         public static List<Course> CourseList = new List<Course>();
-
+             
 
         public Course(string title, string courseId, string instructor)
         {
