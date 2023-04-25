@@ -15,7 +15,7 @@
         </Tab>
         <Tab Title="Courses">
             <ShellContent
-        Title="View All Courses"
+        Title="All Courses"
         ContentTemplate="{DataTemplate local:ViewCourses}"
         Route="ViewCourses" />
         </Tab>
