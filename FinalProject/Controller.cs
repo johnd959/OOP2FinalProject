@@ -31,9 +31,28 @@ namespace FinalProject
 
                 Student student = new Student(id, first, last, phone, email, gender, address);
             }
+            reader.Close(); 
+            db.cmd.CommandText = "Select title, courseid, instructor FROM courses;"; 
+            reader = db.cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string title = reader.GetString(0);
+                string courseid = reader.GetString(1);
+                string instructor = reader.GetString(2);
 
+                Course course = new Course(title, courseid, instructor);
+            }
+            reader.Close();
+            db.cmd.CommandText = "Select student_id, course_id FROM student_courses;";
+            reader = db.cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string studentid = reader.GetString(0);
+                string courseid = reader.GetString(1);
 
-
+                StudentCourses studentcourses = new StudentCourses(studentid, courseid);
+            }
+            reader.Close();
             db.CloseConnection();
         }
 

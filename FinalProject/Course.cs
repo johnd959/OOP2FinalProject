@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,15 +12,16 @@ namespace FinalProject
         public string Title { get; private set; }
         public string CourseId { get; private set; }
         public string Instructor { get; private set; }
-        public static List<Course> CourseList = new List<Course>();
-
+        private static ObservableCollection<Course> courseList = new ObservableCollection<Course>();
+        public static ObservableCollection<Course> CourseList { get { return courseList; } }
+             
 
         public Course(string title, string courseId, string instructor)
         {
             Title = title;
             CourseId = courseId;
             Instructor = instructor;
-            Course.CourseList.Add(this);
+            Course.courseList.Add(this);
         }
 
 
