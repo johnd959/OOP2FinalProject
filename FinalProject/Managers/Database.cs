@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySqlConnector;
 
-namespace FinalProject
+namespace FinalProject.Managers
 {
     public class Database
     {
@@ -23,6 +23,7 @@ namespace FinalProject
             Initialize();
         }
 
+        // allowing only one instance of this specific database
         public static Database GetInstance()
         {
             if (instance == null)
@@ -130,32 +131,6 @@ namespace FinalProject
                 this.CloseConnection();
             }
         }
-
-        //Delete statement
-        public void Delete()
-        {
-        }
-
-        //Select statement
-/*        public List<string>[] Select()
-        {
-        }*/
-
-        //Count statement
-/*        public int Count()
-        {
-        }*/
-
-        //Backup
-        public void Backup()
-        {
-        }
-
-        //Restore
-        public void Restore()
-        {
-        }
-
     }
 }
 

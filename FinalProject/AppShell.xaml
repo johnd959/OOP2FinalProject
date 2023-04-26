@@ -26,6 +26,12 @@
         ContentTemplate="{DataTemplate local:ViewClassList}"
         Route="ViewClassList" />
         </Tab>
+        <Tab Title="Course List">
+            <ShellContent
+        Title="Course List"
+        ContentTemplate="{DataTemplate local:ViewCourseList}"
+        Route="ViewCourseList"/>
+        </Tab>
     </TabBar>
 
 
