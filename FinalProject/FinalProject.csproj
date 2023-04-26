@@ -62,6 +62,9 @@
 	  <MauiXaml Update="ViewClassList.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="ViewCourseList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="ViewCourses.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
