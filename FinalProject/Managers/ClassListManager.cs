@@ -36,29 +36,5 @@ namespace FinalProject.Managers
             db.CloseConnection();
             return classList;
         }
-
-        public static List<Course> GetCourseList(string studentID)
-        {
-            List<Course> courseList = new List<Course>();
-            Database db = Database.GetInstance();
-            if (db.OpenConnection())
-            {
-                db.cmd = new MySqlCommand($"SELECT title, courseId, instructor FROM courses JOIN student_courses ON (student_courses.course_id = courses.courseId) WHERE student_courses.student_id LIKE \'%{studentID}%\';", db.connection);
-                MySqlDataReader reader = db.cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    courseList.Add(new Course(reader.GetString(0), reader.GetString(1), reader.GetString(2), false));
-                }
-
-            }
-            else
-            {
-                db.CloseConnection();
-                throw new Exception($"No student found with studentID: {studentID}");
-            }
-            db.CloseConnection();
-            return courseList;
-        }
     }
 }

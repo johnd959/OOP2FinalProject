@@ -18,12 +18,12 @@ public partial class ViewCourseList : ContentPage
             {
                 throw new Exception("Search field is empty or invalid");
             }
-            courseList = ClassListManager.GetCourseList(studentIDEntry.Text.Trim());
+            courseList = CourseLIstManager.GetCourseList(studentIDEntry.Text.Trim()); 
         }
         catch (Exception ex)
         {
             DisplayAlert("Error", ex.Message, "OK");
         }
-        classesListView.ItemsSource = courseList;
+        coursesListView.ItemsSource = courseList;
     }
 }

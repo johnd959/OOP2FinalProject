@@ -24,7 +24,7 @@
             <Entry x:Name="studentIDEntry" Placeholder="Student ID" Text=""/>
             <Button x:Name="studentIDSearchButton" Text="Search" Clicked="studentIDSearchButton_Clicked"></Button>
         </FlexLayout>
-        <ListView x:Name="classesListView" BackgroundColor="White" Grid.Row="0" Grid.Column="1" Grid.RowSpan="8">
+        <ListView x:Name="coursesListView" BackgroundColor="White" Grid.Row="0" Grid.Column="1" Grid.RowSpan="8">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
