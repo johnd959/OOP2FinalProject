@@ -43,6 +43,8 @@ namespace FinalProject.Managers
             }
             db.CloseConnection();
         }
+
+        //method to create a new student object and insert it into the database
         public static void Create(string id, Dictionary<string, string> info)
         {
             Database db = Database.GetInstance();
@@ -59,20 +61,19 @@ namespace FinalProject.Managers
                 }
             }
             reader.Close();
+            db.CloseConnection();  
             new Student(id, info["First"], info["Last"], info["Phone"], info["Email"], info["Gender"], info["Address"]);
 
             try
             {
-                db.cmd = new MySqlCommand($"INSERT INTO students (id, first, last, email, gender, address, phone) VALUES (\'{id}\', " +
-    $"\'{info["First"]}\', \'{info["Last"]}\', \'{info["Email"]}\', \'{info["Gender"]}\', \'{info["Address"]}\', \'{info["Phone"]}\');", db.connection);
-                db.cmd.ExecuteNonQuery();
+                db.Insert($"INSERT INTO students (id, first, last, email, gender, address, phone) VALUES (\'{id}\', " +
+    $"\'{info["First"]}\', \'{info["Last"]}\', \'{info["Email"]}\', \'{info["Gender"]}\', \'{info["Address"]}\', \'{info["Phone"]}\');");
             }
             catch (Exception ex)
             {
                 db.CloseConnection();
                 throw new Exception(ex.Message);
             }
-            db.CloseConnection(); 
         }
     }
 }

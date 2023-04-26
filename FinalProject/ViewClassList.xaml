@@ -20,11 +20,26 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <FlexLayout Grid.Row="1" Grid.Column="0">
-            <Label x:Name="coursesIDLabel" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End">Course ID</Label>
-            <Entry x:Name="courseIDEntry" Placeholder="Course ID" Text=""/>
-            <Button x:Name="courseIDSearchButton" Text="Search" Clicked="courseIDSearchButton_Clicked"></Button>
+            <Label x:Name="coursesIDLabel" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" WidthRequest="100" HeightRequest="35">Course ID</Label>
+            <Entry x:Name="courseIDEntry" Placeholder="Course ID" WidthRequest="100" HeightRequest="35" Text=""/>
+            <Button x:Name="courseIDSearchButton" Text="Search" Clicked="courseIDSearchButton_Clicked" WidthRequest="100" HeightRequest="35"></Button>
         </FlexLayout>
-        <ListView x:Name="classesListView" BackgroundColor="White" Grid.Row="0" Grid.Column="1" Grid.RowSpan="8">
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="idLabel" Grid.Column="0"  Grid.Row="0" FontSize="18" VerticalOptions="End" HorizontalOptions="Start" TextDecorations="Underline" Padding="15,0,0,0">Id</Label>
+            <Label x:Name="firstLabel" Grid.Column="1"  Grid.Row="0" FontSize="18" VerticalOptions="End" HorizontalOptions="Start" TextDecorations="Underline" Padding="15,0,0,0">First</Label>
+            <Label x:Name="lastLabel" Grid.Column="2"  Grid.Row="0" FontSize="18" VerticalOptions="End" HorizontalOptions="Start" TextDecorations="Underline" Padding="15,0,0,0">Last</Label>
+            <Label x:Name="emailLabel" Grid.Column="3"  Grid.Row="0" FontSize="18" VerticalOptions="End" HorizontalOptions="Start" TextDecorations="Underline" Padding="15,0,0,0">Email</Label>
+        </Grid>
+        <ListView x:Name="classesListView" BackgroundColor="White" Grid.Row="1" Grid.Column="1" Grid.RowSpan="8">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

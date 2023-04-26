@@ -20,11 +20,24 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <FlexLayout Grid.Row="1" Grid.Column="0">
-            <Label x:Name="studentIDLabel" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End">Student ID</Label>
-            <Entry x:Name="studentIDEntry" Placeholder="Student ID" Text=""/>
-            <Button x:Name="studentIDSearchButton" Text="Search" Clicked="studentIDSearchButton_Clicked"></Button>
+            <Label x:Name="studentIDLabel" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" WidthRequest="100" HeightRequest="35">Student ID</Label>
+            <Entry x:Name="studentIDEntry" Placeholder="Student ID" Text="" WidthRequest="100" HeightRequest="35"/>
+            <Button x:Name="studentIDSearchButton" Text="Search" Clicked="studentIDSearchButton_Clicked" WidthRequest="100" HeightRequest="35"></Button>
         </FlexLayout>
-        <ListView x:Name="coursesListView" BackgroundColor="White" Grid.Row="0" Grid.Column="1" Grid.RowSpan="8">
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="idTitle" Grid.Column="0"  Grid.Row="0" FontSize="18" VerticalOptions="End" HorizontalOptions="Start" TextDecorations="Underline" Padding="15,0,0,0">Title</Label>
+            <Label x:Name="firstCourseId" Grid.Column="1"  Grid.Row="0" FontSize="18" VerticalOptions="End" HorizontalOptions="Start" TextDecorations="Underline" Padding="15,0,0,0">Course</Label>
+            <Label x:Name="lastInstructor" Grid.Column="2"  Grid.Row="0" FontSize="18" VerticalOptions="End" HorizontalOptions="Start" TextDecorations="Underline" Padding="15,0,0,0">Instructor</Label>
+        </Grid>
+        <ListView x:Name="coursesListView" BackgroundColor="White" Grid.Row="1" Grid.Column="1" Grid.RowSpan="8">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

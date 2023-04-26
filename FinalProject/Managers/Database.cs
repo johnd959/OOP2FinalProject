@@ -7,6 +7,7 @@ using MySqlConnector;
 
 namespace FinalProject.Managers
 {
+    //modified database class from the LAB to suit our needs
     public class Database
     {
         public  MySqlConnection connection;

@@ -13,6 +13,8 @@ namespace FinalProject.Managers
         public static List<Course> courseList = new List<Course>();
 
         //method to register student
+        //takes studentID and courseID and creates a new student_Courses object 
+        //also writes the same information to the database
         public static void RegisterStudent(string studentID, string courseID)
         {
             // querying database to check for existing registration
@@ -34,6 +36,7 @@ namespace FinalProject.Managers
                 }
             }
             reader.Close();
+            db.CloseConnection();
             //else create new object and update database
             if (string.IsNullOrEmpty(studentID) || string.IsNullOrEmpty(courseID)) 
             {
@@ -41,38 +44,7 @@ namespace FinalProject.Managers
                 throw new Exception("StudentID or CourseID field(s) are empty");
             }
             StudentCourses studentCourses = new StudentCourses(studentID, courseID);
-            db.cmd = new MySqlCommand($"INSERT INTO student_courses (student_id, course_id) values (\'{studentID}\', \'{courseID}\');", db.connection);
-            db.cmd.ExecuteNonQuery();
-            db.CloseConnection(); 
-
-            //List<StudentCourses>? existingRegistrationList = new List<StudentCourses>();
-            //StudentCourses? foundRegistration = null;
-            //foreach (StudentCourses studentCourse in ClassListManager.studentCourseList)
-            //{
-            //    if (studentCourse.StudentId == studentID)
-            //    {
-            //        existingRegistrationList.Add(studentCourse);
-            //    }
-            //}
-            //foreach (StudentCourses existingRegistration in existingRegistrationList)
-            //{
-            //    if (existingRegistration.CourseId == courseID)
-            //    {
-            //        foundRegistration = existingRegistration;
-            //        break;
-            //    }
-            //}
-            //if (foundRegistration != null)
-            //{
-            //    return "There is already an existing registration with this Student ID and Course ID";
-            //}
-            //else
-            //{
-            //    Database db = Database.GetInstance();
-            //    new StudentCourses(studentID, courseID);
-            //    db.Insert($"INSERT INTO student_courses (student_id, course_id) values (\'{studentID}\', \'{courseID}\');");
-            //    return "Registration Successful";
-            
+            db.Insert($"INSERT INTO student_courses (student_id, course_id) values (\'{studentID}\', \'{courseID}\');");
         }
     }
 }

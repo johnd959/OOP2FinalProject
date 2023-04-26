@@ -12,6 +12,8 @@ using FinalProject.Classes;
 
 namespace FinalProject.Managers
 {
+   // class for initializing the program
+   //loads all the information from the database into objects 
     public class Loader
     {
         public static void Load()

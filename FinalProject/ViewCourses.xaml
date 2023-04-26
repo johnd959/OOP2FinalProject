@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FinalProject.ViewCourses"
-             Title="All Courses">
+             Title="All Courses"
+             NavigatedTo="ContentPage_NavigatedTo">
 
     <!--Page Grid-->
-    <Grid x:Name="CoursesGrid" BackgroundColor="AliceBlue">
+    <Grid x:Name="CoursesGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height ="1*"/>
             <RowDefinition Height ="1*"/>
@@ -18,7 +19,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="courseListLabel" FontSize="18" HorizontalOptions="Start" VerticalOptions="Center">Course List</Label>
+        <Label x:Name="courseListLabel" FontSize="18" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="1">Course List</Label>
         <!--Courses List View--> 
         <ListView x:Name="coursesListView" BackgroundColor="White" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" ItemSelected="coursesListView_ItemSelected">
             <ListView.ItemTemplate>

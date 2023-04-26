@@ -13,13 +13,14 @@ namespace FinalProject.Managers
         public static List<StudentCourses> studentCourseList = new List<StudentCourses>();
 
         //method to get the list for the listview for the classes
+        //takes a coursID and returns a list of students
         public static List<Student> GetClassList(string courseID)
         {
             List<Student> classList = new List<Student>();
             Database db = Database.GetInstance();
             if (db.OpenConnection())
             {
-                db.cmd = new MySqlCommand($"SELECT id, first, last, email FROM students JOIN student_courses ON (student_courses.student_id = students.id) WHERE student_courses.course_id LIKE \'%{courseID}%\';", db.connection);
+                db.cmd = new MySqlCommand($"SELECT id, first, last, email FROM students JOIN student_courses ON (student_courses.student_id = students.id) WHERE TRIM(student_courses.course_id) like \'{courseID}%\';", db.connection);
                 MySqlDataReader reader = db.cmd.ExecuteReader();
 
                 while (reader.Read())
