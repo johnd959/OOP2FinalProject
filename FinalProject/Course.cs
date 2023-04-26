@@ -12,8 +12,7 @@ namespace FinalProject
         public string Title { get; private set; }
         public string CourseId { get; private set; }
         public string Instructor { get; private set; }
-        private static ObservableCollection<Course> courseList = new ObservableCollection<Course>();
-        public static ObservableCollection<Course> CourseList { get { return courseList; } }
+        public static List<Course> courseList = new List<Course>();
              
 
         public Course(string title, string courseId, string instructor)
@@ -21,7 +20,7 @@ namespace FinalProject
             Title = title;
             CourseId = courseId;
             Instructor = instructor;
-            Course.courseList.Add(this);
+            courseList.Add(this);
         }
 
 

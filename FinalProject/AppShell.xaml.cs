@@ -1,4 +1,6 @@
-﻿namespace FinalProject;
+﻿
+
+namespace FinalProject;
 
 public partial class AppShell : Shell
 {

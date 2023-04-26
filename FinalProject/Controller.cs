@@ -56,9 +56,36 @@ namespace FinalProject
             db.CloseConnection();
         }
 
-        public static void RegisterStudent(Student student, Course course)
+        public static string RegisterStudent(string studentID, string courseID)
         {
-            StudentCourses newRegistration = new StudentCourses(student.Id, course.CourseId);
+            List<StudentCourses>? existingRegistrationList = new List<StudentCourses>();
+            StudentCourses? foundRegistration = null;
+            foreach(StudentCourses studentCourse in StudentCourses.studentCourseList)
+            {
+                if (studentCourse.StudentId == studentID)
+                {
+                    existingRegistrationList.Add(studentCourse);
+                }
+            }
+            foreach(StudentCourses existingRegistration in existingRegistrationList)
+            {
+                if (existingRegistration.CourseId == courseID)
+                {
+                    foundRegistration = existingRegistration;
+                    break;
+                }
+            }
+            if (foundRegistration != null)
+            {
+                return "There is already an existing registration with this Student ID and Course ID";
+            }
+            else
+            {
+                Database db = Database.GetInstance();
+                new StudentCourses(studentID, courseID);
+                db.Insert($"INSERT INTO student_courses (student_id, course_id) values (\'{studentID}\', \'{courseID}\');");
+                return "Registration Successful"; 
+            }
         }
         public static Student SearchStudentById(string id)
         {
@@ -67,6 +94,21 @@ namespace FinalProject
                 if (student.Id == id) return student;
             }
             return null;
+        }
+        public static List<Student> GetClassList(string courseID)
+        {
+            List<Student> classList = new List<Student>();
+            Database db = Database.GetInstance();
+            db.OpenConnection();
+            db.cmd = new MySqlCommand($"SELECT id, first, last, email FROM students JOIN student_courses ON (student_courses.student_id = students.id) WHERE student_courses.course_id LIKE '%{courseID}%';", db.connection);
+            MySqlDataReader reader = db.cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                classList.Add(new Student(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)));
+            }
+            db.CloseConnection();
+            return classList;
         }
     }
 }

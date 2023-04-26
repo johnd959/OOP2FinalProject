@@ -9,8 +9,10 @@ public partial class ViewClassList : ContentPage
 	{
 		InitializeComponent();
 	}
-/*	public static void Test()
-	{
-		stude
-	}*/
+
+    private void courseIDSearchButton_Clicked(object sender, EventArgs e)
+    {
+		List<Student> classList = Controller.GetClassList(courseIDEntry.Text);
+		classesListView.ItemsSource = classList;
+    }
 }

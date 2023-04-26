@@ -29,9 +29,12 @@ namespace FinalProject
             Student.StudentList.Add(this);
         }
 
-        public void Register(Course course)
+        public Student(string id, string first, string last, string email) 
         {
-            Controller.RegisterStudent(this, course);
+            Id = id;
+            First = first;
+            Last = last;
+            Email = email;
         }
     }
 }

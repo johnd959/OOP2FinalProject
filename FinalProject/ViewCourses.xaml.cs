@@ -10,12 +10,22 @@ public partial class ViewCourses : ContentPage
     public ViewCourses()
 	{
 		InitializeComponent();
+		coursesListView.ItemsSource = Course.courseList; 
 	}
-/*	public static void LoadList()
-	{
-		foreach(Course course in Course.CourseList)
-		{
-			Cours += $"{course.CourseId}, {course.Title}, {course.Instructor}";
-        }
-	}*/
+
+    private void register_Clicked(object sender, EventArgs e)
+    {
+        string studentID = studentIDEntry.Text;
+        string courseID = courseIDEntry.Text;
+        string success = Controller.RegisterStudent(studentID, courseID);
+        DisplayAlert("Alert", success, "Ok");
+        
+
+    }
+
+    private void coursesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {     
+        Course selectedItem = e.SelectedItem as Course;
+        courseIDEntry.Text = selectedItem.CourseId; 
+    }
 }
